@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Tradutor Geek</title>
+	<link rel="stylesheet" href="helpers.min.css">
+
+	<script src="app.js"></script>
+	<script src="dicionario-pt-geek.js"></script>
+	<script src="dicionario-geek-pt.js"></script>
+
+	<style>
+	/* gray-5, float-left */
+	* { box-sizing: border-box }
+	textarea, #texto-traduzido { min-height:120px }
+	[layout~='float-left'] { float:left }
+	button { border:1px solid rgba(0,0,0,0.1); padding:6px 11px; background-image: -webkit-linear-gradient(top,#f5f5f5,#f1f1f1); border-radius:2px; font-weight:bold; color:#444;  }
+	button.traduzir { background-color: #4d90fe; background-image: -webkit-linear-gradient(top,#4d90fe,#4787ed); border: 1px solid #3079ed; color: #fff }
+	.barra-de-botoes * { border-left:0 }
+	.barra-de-botoes button:first-child { border-left:1px solid rgba(0,0,0,0.1); border-radius:2px 0 0 2px }
+	.barra-de-botoes button:last-child { border-radius:0 2px 2px 0 }
+	.barra-de-botoes button.ativo { border:1px solid #ccc; box-shadow: inset 0 1px 2px rgba(0,0,0,.1); background-color: #eee; background-image: -webkit-linear-gradient(top,#eee,#e0e0e0);}
+	</style>
+</head>
+<body text="arial gray-90" layout="no-margin" links="gray-60 hover-red">
+	
+	<nav layout="block gray-10 padding-15 h-padding-20">
+		Tradutor
+	</nav>
+	
+	<div layout="padding-20 fix">
+		<div layout="half left">
+<!--
+			<button layout="right top-10">troca -></button>
+-->
+			<div class="barra-de-botoes" layout="flex v-padding-10">
+				<button onclick="troca_tipo_para('geek-pt', this)" class="ativo">Geek</button>
+				<button onclick="troca_tipo_para('pt-geek', this)">Português</button>
+			</div>
+			<textarea onkeyup="traduzir(this.value)" text="1.5em arial" layout="fluid padding-10" placeholder="Digite algo..."></textarea>
+			<div id="caracteres-editor"></div>
+		</div>
+		<div layout="half right">
+			<div id="botoes-traduzido" class="barra-de-botoes" layout="flex v-padding-10 left-10 float-left">
+				<button onclick="troca_tipo_para('geek-pt', this)" class="ativo">Português</button>
+				<button onclick="troca_tipo_para('pt-geek', this)">Geek</button>
+			</div>
+<!--
+			<button class="traduzir" layout="left-15 top-10">Traduzir</button>
+-->
+			<div id="texto-traduzido" text="1.5em" layout="gray-10 padding-10 fluid left-10 few-rounded clear"></div>
+			<div id="caracteres-traduzido" layout="left-10"></div>
+		</div>
+	</div>
+	
+	<div text=".8em center gray-40" layout="fixed bottom left right gray-10 padding-20" style="border-top:1px solid #ccc">
+		<a>Sobre o tradutor Geek</a>
+		| <a href="http://araujo.cc">Desenvolvedor</a>
+	</div>
+
+</body>
+</html>
